@@ -73,6 +73,10 @@ def do_train(dataset=None, network=None, load_checkpoint_path="", save_checkpoin
                                  directory=None if save_checkpoint_path == "" else save_checkpoint_path,
                                  config=ckpt_config)
     param_dict = load_checkpoint(load_checkpoint_path)
+    #for key in param_dict:
+    #    print(key)
+    #for param in network.trainable_params():
+    #    print(param.name)
     load_param_into_net(network, param_dict)
 
     update_cell = DynamicLossScaleUpdateCell(loss_scale_value=2**32, scale_factor=2, scale_window=1000)
